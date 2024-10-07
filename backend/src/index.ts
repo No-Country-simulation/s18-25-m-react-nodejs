@@ -5,6 +5,7 @@ import envs from "./config/envs";
 import authUserRoutes from "./features/auth_user/routes/authUserRoutes";
 import userRouter from "./features/user/routes/userRoutes";
 import { healthcheck } from "./utils/healthcheck";
+import postRouter from "./features/post/postRoutes";
 const { swaggerUi, swaggerSpecs } = require("./config/swagger");
 require("dotenv").config();
 
@@ -25,8 +26,7 @@ app.use(
 
 app.use("/health", healthcheck);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
-
-app.use("/api/v1", userRouter,authUserRoutes);
+app.use("/api/v1", userRouter, authUserRoutes, postRouter);
 
 // Para usar sin la db
 // app.listen(PORT, () => {
