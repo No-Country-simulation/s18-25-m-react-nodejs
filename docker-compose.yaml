@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  tecno-db:
+    image: mysql:8.0.39
+    container_name: tecno-db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: test
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:

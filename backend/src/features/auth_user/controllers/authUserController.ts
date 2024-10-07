@@ -1,4 +1,4 @@
-import { UserDataToken } from "../../../middlewares/auth/interface/UserDataToken";
+import { UserDataToken } from "../../../middlewares/Auth/interface/UserDataToken";
 import { Request, Response } from "express";
 import { json } from "stream/consumers";
 

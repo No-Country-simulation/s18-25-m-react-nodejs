@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { authUserController } from "../controllers/authUserController";
-import { MiddlewareAuth0 } from "../../../middlewares/auth/MiddlewareAuth0";
+import { MiddlewareAuth0 } from "../../../middlewares/Auth/MiddlewareAuth0";
 
 const router = Router();
 const { CheckToken, SetToken } = MiddlewareAuth0;
@@ -24,7 +24,12 @@ const { CheckToken, SetToken } = MiddlewareAuth0;
  *       400:
  *         description: Error en la petición
  */
-router.post("/auth/register", SetToken, CheckToken, authUserController.CreateUserAuthC);
+router.post(
+  "/auth/register",
+  SetToken,
+  CheckToken,
+  authUserController.CreateUserAuthC
+);
 
 /**
  * @swagger
@@ -38,6 +43,11 @@ router.post("/auth/register", SetToken, CheckToken, authUserController.CreateUse
  *       401:
  *         description: Error de autenticación
  */
-router.get("/auth/login", SetToken, CheckToken, authUserController.CreateUserAuthC);
+router.get(
+  "/auth/login",
+  SetToken,
+  CheckToken,
+  authUserController.CreateUserAuthC
+);
 
 export default router;
