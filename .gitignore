@@ -130,3 +130,6 @@ dist
 .pnp.*
 
 nohup.out
+
+#client
+package-lock.json
