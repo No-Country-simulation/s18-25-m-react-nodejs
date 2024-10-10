@@ -1,0 +1,82 @@
+get:
+  summary: Obtiene un usuario por ID
+  tags: [Usuarios]
+  parameters:
+    - in: path
+      name: id
+      required: true
+      description: ID del usuario
+      schema:
+        type: string
+  responses:
+    '200':
+      description: usuario encontrado
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/user-schema.yaml'
+          example:
+            id: 1
+            name: 'Martin'
+            email: 'email@gmail.com'
+            social_networks:
+              id: 1
+              gitlab: 'https://example.com'
+              twitter: 'https://example.com'
+              instagram: 'https://example.com'
+            posts:
+              - id: '1'
+                title: 'Primer post'
+                content: 'Contenido del primer post'
+
+    '404':
+      description: usuario no encontrado
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+          example:
+            message: usuario no encontrado
+delete:
+  summary: Elimina un usuario por ID
+  tags: [Usuarios]
+  parameters:
+    - in: path
+      name: id
+      required: true
+      description: ID del usuario
+      schema:
+        type: string
+  responses:
+    '204':
+      description: usuario eliminado
+    '404':
+      description: usuario no encontrado
+put:
+  summary: Modifica un usuario ya existente
+  tags: [Usuarios]
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/user-schema.yaml'
+        example:
+          title: 'Mi primer usuario'
+          content: 'Este es el contenido de mi primer usuario'
+          user: '12345'
+  responses:
+    '201':
+      description: usuario modificado
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/user-schema.yaml'
+          example:
+            id: '1'
+            title: 'Mi primer usuario'
+            content: 'Este es el contenido de mi primer usuario'
+            user: '12345'

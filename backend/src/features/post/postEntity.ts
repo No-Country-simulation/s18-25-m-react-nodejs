@@ -1,3 +1,6 @@
+import { Image } from '@/features/image/imageEntity';
+import { Technology } from '@/features/technology/technologyEntity';
+import { User } from '@/features/user/userEntity';
 import {
   Column,
   CreateDateColumn,
@@ -8,9 +11,6 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Image } from '@/features/image/imageEntity';
-import { Technology } from '@/features/technology/technologyEntity';
-import { User } from '@/features/user/userEntity';
 
 @Entity()
 export class Post {

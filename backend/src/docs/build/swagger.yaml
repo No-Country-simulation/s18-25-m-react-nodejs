@@ -426,23 +426,158 @@ paths:
               example:
                 name: react
                 color: '#ffffff'
-  /auth/register:
-    post:
-      summary: Registra un nuevo usuario
-      tags:
-        - Authentication
-      responses:
-        '201':
-          description: Usuario registrado exitosamente
-        '400':
-          description: Error en la petición
-  /auth/login:
+  /user:
     get:
-      summary: Autenticar usuario y generar token
+      summary: Obtiene todos los usuarios
       tags:
-        - Authentication
+        - Usuarios
       responses:
         '200':
-          description: Login exitoso
-        '401':
-          description: Error de autenticación
+          description: Lista de usuarios
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/paths/~1user~1%7Bid%7D/put/requestBody/content/application~1json/schema'
+              example:
+                - id: 1
+                  name: Martin
+                  email: email@gmail.com
+                  social_networks:
+                    id: 1
+                    gitlab: 'https://example.com'
+                    twitter: 'https://example.com'
+                    instagram: 'https://example.com'
+                  posts:
+                    - id: '1'
+                      title: Primer post
+                      content: Contenido del primer post
+                - id: 2
+                  name: Sofia
+                  email: email@gmail.com
+                  social_networks:
+                    id: 2
+                    facebook: 'https://example.com'
+                  posts:
+                    - id: '1'
+                      title: Primer post
+                      content: Contenido del primer post
+                    - id: '2'
+                      title: Segundo post
+                      content: Contenido del segundo post
+  '/user/{id}':
+    get:
+      summary: Obtiene un usuario por ID
+      tags:
+        - Usuarios
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID del usuario
+          schema:
+            type: string
+      responses:
+        '200':
+          description: usuario encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1user~1%7Bid%7D/put/requestBody/content/application~1json/schema'
+              example:
+                id: 1
+                name: Martin
+                email: email@gmail.com
+                social_networks:
+                  id: 1
+                  gitlab: 'https://example.com'
+                  twitter: 'https://example.com'
+                  instagram: 'https://example.com'
+                posts:
+                  - id: '1'
+                    title: Primer post
+                    content: Contenido del primer post
+        '404':
+          description: usuario no encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+              example:
+                message: usuario no encontrado
+    delete:
+      summary: Elimina un usuario por ID
+      tags:
+        - Usuarios
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID del usuario
+          schema:
+            type: string
+      responses:
+        '204':
+          description: usuario eliminado
+        '404':
+          description: usuario no encontrado
+    put:
+      summary: Modifica un usuario ya existente
+      tags:
+        - Usuarios
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: number
+                name:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: number
+                social_networks:
+                  type: object
+                  properties:
+                    id:
+                      type: number
+                    github:
+                      type: string
+                    gitlab:
+                      type: string
+                    twitter:
+                      type: string
+                    instagram:
+                      type: string
+                    facebook:
+                      type: string
+                    linkedin:
+                      type: string
+                posts:
+                  type: array
+                  items:
+                    $ref: '#/paths/~1post~1%7Bid%7D/put/requestBody/content/application~1json/schema'
+            example:
+              title: Mi primer usuario
+              content: Este es el contenido de mi primer usuario
+              user: '12345'
+      responses:
+        '201':
+          description: usuario modificado
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1user~1%7Bid%7D/put/requestBody/content/application~1json/schema'
+              example:
+                id: '1'
+                title: Mi primer usuario
+                content: Este es el contenido de mi primer usuario
+                user: '12345'

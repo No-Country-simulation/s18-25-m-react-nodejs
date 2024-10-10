@@ -1,0 +1,16 @@
+type: object
+properties:
+  id:
+    type: number
+  name:
+    type: string
+  email:
+    type: string
+  password:
+    type: number
+  social_networks:
+    $ref: './social-networks-schema.yaml'
+  posts:
+    type: array
+    items:
+      $ref: './post-schema.yaml'

@@ -8,6 +8,7 @@ import authUserRoutes from './features/auth_user/routes/authUserRoutes';
 import imageRouter from './features/image/imageRoutes';
 import postRouter from './features/post/postRoutes';
 import projectRouter from './features/project/projectRoutes';
+import socialNetworksRouter from './features/social_networks/socialNetworksRoutes';
 import technologyRouter from './features/technology/technologyRoutes';
 import userRouter from './features/user/userRoutes';
 import { globalErrors } from './middlewares/GlobalErrors';
@@ -22,7 +23,16 @@ setBaseMiddlewares(app);
 app.get('/', redirectToDocs);
 app.use('/health', healthcheck);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
-app.use('/api/v1', userRouter, authUserRoutes, projectRouter, postRouter, technologyRouter, imageRouter);
+app.use(
+  '/api/v1',
+  userRouter,
+  authUserRoutes,
+  projectRouter,
+  postRouter,
+  technologyRouter,
+  imageRouter,
+  socialNetworksRouter,
+);
 
 app.use(globalErrors);
 

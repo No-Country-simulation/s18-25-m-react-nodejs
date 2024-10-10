@@ -28,7 +28,7 @@ paths:
     $ref: './paths/technology.yaml'
   /technology/{name}:
     $ref: './paths/technology-by-name.yaml'
-  /auth/register:
-    $ref: './paths/register.yaml'
-  /auth/login:
-    $ref: './paths/login.yaml'
+  /user:
+    $ref: './paths/user.yaml'
+  /user/{id}:
+    $ref: './paths/user-by-id.yaml'

@@ -1,0 +1,16 @@
+type: object
+properties:
+  id:
+    type: number
+  github:
+    type: string
+  gitlab:
+    type: string
+  twitter:
+    type: string
+  instagram:
+    type: string
+  facebook:
+    type: string
+  linkedin:
+    type: string

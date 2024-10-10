@@ -23,7 +23,7 @@ class UserController {
   public async getUserById(req: Request, res: Response): Promise<void> {
     const { id } = req.params;
 
-    const user = await userRepository.getUserById(id);
+    const user = await userRepository.getUserById(Number(id));
     res.json(user);
   }
 

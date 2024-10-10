@@ -1,9 +1,11 @@
 import con from '@/config/database';
 import envs from '@/config/envs';
-import { Image as ImageEntity } from '/features/image/imageEntity';
+import { Image as ImageEntity } from '@/features/image/imageEntity';
 import { Post as PostEntity } from '@/features/post/postEntity';
+import { SocialNetworks as SocialNetworkEntity } from '@/features/social_networks/socialNetworksEntity';
 import { User as UserEntity } from '@/features/user/userEntity';
 import { MOCK_POSTS } from './mockups/posts.mock';
+import { USERS_MOCK } from './mockups/users.mock';
 
 async function seed() {
   if (!envs.SEED) {
@@ -16,17 +18,47 @@ async function seed() {
       await con.initialize();
     }
 
+    const SocialNetwork = con.getRepository(SocialNetworkEntity);
     const Post = con.getRepository(PostEntity);
-    const User = con.getRepository(UserEntity);
     const Image = con.getRepository(ImageEntity);
+    const User = con.getRepository(UserEntity);
+
+    // Seed users
+    Promise.all(
+      USERS_MOCK.map(async (user) => {
+        const { email, name, password } = user;
+
+        const newSocialsNetworks = SocialNetwork.create(user.social_networks);
+
+        await SocialNetwork.save(newSocialsNetworks);
+
+        const newUser = User.create({
+          email,
+          name,
+          password,
+          social_networks: newSocialsNetworks,
+        });
+
+        await User.save(newUser);
+      }),
+    );
+
+    const newSocialsNetworks = SocialNetwork.create({
+      facebook: 'https://facebook.com',
+      github: 'https://github.com',
+      gitlab: 'https://gitlbab.com',
+    });
+
+    await SocialNetwork.save(newSocialsNetworks);
 
     const newUser = User.create({
       email: 'email@gmail.com',
       name: 'username',
       password: 'password',
+      social_networks: newSocialsNetworks,
     });
 
-    await User.insert(newUser);
+    await User.save(newUser);
 
     const posts = await Promise.all(
       MOCK_POSTS.map(async (post) => {

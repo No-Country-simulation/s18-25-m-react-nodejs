@@ -1,0 +1,38 @@
+get:
+  summary: Obtiene todos los usuarios
+  tags: [Usuarios]
+  responses:
+    '200':
+      description: Lista de usuarios
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../schemas/user-schema.yaml'
+          example:
+            - id: 1
+              name: 'Martin'
+              email: 'email@gmail.com'
+              social_networks:
+                id: 1
+                gitlab: 'https://example.com'
+                twitter: 'https://example.com'
+                instagram: 'https://example.com'
+              posts:
+                - id: '1'
+                  title: 'Primer post'
+                  content: 'Contenido del primer post'
+            - id: 2
+              name: 'Sofia'
+              email: 'email@gmail.com'
+              social_networks:
+                id: 2
+                facebook: 'https://example.com'
+              posts:
+                - id: '1'
+                  title: 'Primer post'
+                  content: 'Contenido del primer post'
+                - id: '2'
+                  title: 'Segundo post'
+                  content: 'Contenido del segundo post'
