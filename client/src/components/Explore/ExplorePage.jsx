@@ -11,6 +11,7 @@ export const ExplorePage = () => {
   }, [isLoading]);
 
   return (
+
     <div className="container mx-auto p-2 sm:p-0">
       <h2>ExplorePage</h2>
 

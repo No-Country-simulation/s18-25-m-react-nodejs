@@ -13,7 +13,9 @@
   },
   "dependencies": {
     "auth0-js": "^9.27.0",
+    "build": "^0.1.4",
     "cliente": "file:",
+    "css": "^3.0.0",
     "query-string": "^9.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
