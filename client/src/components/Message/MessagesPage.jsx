@@ -1,16 +1,13 @@
-import { MessagePanel } from "../Message/MessagePanel";
-import { MessageSidebar} from "../Message/MessageSidebar";
-import { SimilarProfiles } from "../Message/SimilarProfile";
+import { MessagePanel } from "../Messages/MessagePanel";
+import { MessageSidebar} from "../Messages/MessageSidebar";
 
-export const MessagesPage = () => {
-    return (
-      <div className="flex h-screen">
-        <MessageSidebar />
-        <MessagePanel />
-        <SimilarProfiles />
-      </div>
-    );
-  };
-  
-  export default MessagesPage;
-  
+export function Messages() {
+  return (
+    <div className="flex h-[500px] bg-gray-900 text-white"> {/* // en vez de [500px] puede ir screen */}
+      <MessageSidebar />
+      <MessagePanel />
+    </div>
+  );
+}
+
+export default Messages;
