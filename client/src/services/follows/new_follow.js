@@ -10,8 +10,7 @@ const setNewFollower = async (idFollowed) => {
         });
 
         const responseData = await response.json();
-        console.log(responseData.data);
-        
+
         return response.data;
 
     } catch (error) {

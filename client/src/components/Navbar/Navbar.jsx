@@ -46,13 +46,11 @@ const Navbar = () => {
   const [isModalOpenLogin, setIsModalOpenLogin] = useState(false);
 
   useEffect(() => {
-    console.log("empezando");
 
     const checkUserAuth = async () => {
       if (!loading) {
         const auth = await checkAuth();
         setIsAuthenticated(auth);
-        //console.log("terminado");
       }
     };
 

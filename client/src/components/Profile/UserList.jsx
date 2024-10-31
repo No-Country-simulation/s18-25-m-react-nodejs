@@ -39,10 +39,6 @@ const UserList = ({ type }) => {
     }
   }, [getFolloweds, getFollowers, type]);
 
-  useEffect(() => {
-    console.log(`${type} list updated:`, users.list);
-  }, [users.list, type]);
-
   const desiredColumns = 4;
   const ghostDivCount =
     Math.ceil(users.list.length / desiredColumns) * desiredColumns -

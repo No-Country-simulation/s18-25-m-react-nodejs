@@ -54,7 +54,6 @@ const SimilarProfile = () => {
     };
   }, [fetchUsers, isPage]);
 
-  //console.log(similarUsers);
   return (
     <LayouteMain>
       <section className=" max-w-[688px] w-full h-fit flex flex-col gap-y-5">

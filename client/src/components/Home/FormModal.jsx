@@ -24,21 +24,13 @@ const FormModal = () => {
           reader.readAsDataURL(item);
         });
       });
-      //console.log(previewArray)
       Promise.all(previewArray).then((results) => setPreview(results));
     } else {
       setPreview([]);
     }
   }, [image]);
 
-  /* useEffect(() => {
-    //console.log(image)
-    //setUpImage(upImage);
-    //handleFileUploadArray()
-  }, [image, text, preview]); */
-
   const createPost = async () => {
-    console.log(text, varImage);
     try {
       const response = await fetch(`${APIDOMAIN}/api/v1/post`, {
         method: "POST",
@@ -54,7 +46,6 @@ const FormModal = () => {
           images: varImage,
         }),
       });
-      //console.log(text, upImage);
       if (!response.ok) {
         throw new Error("Error en la respuesta de la api");
       }
@@ -82,7 +73,7 @@ const FormModal = () => {
           formData.append("file", file);
 
           const response = await uploadImage(formData); // Llama a la función uploadImage
-          console.log(response);
+          
           return response.fileUrls ? response.fileUrls[0].fileUrl : null; // Extrae el primer URL si existe
         })
       );

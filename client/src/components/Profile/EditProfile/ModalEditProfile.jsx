@@ -26,13 +26,11 @@ const EditProfileModal = ({
     },
   });
 
-  //console.log('HOLAAAAAAAAAAAAAAA',formData);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
   const handleRolesChange = (newRoles) => {
-    console.log(newRoles);
 
     setFormData((prevData) => ({ ...prevData, roles: newRoles }));
   };
@@ -47,7 +45,6 @@ const EditProfileModal = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Datos actualizados:", formData);
 
     const update = SetProfileService.updateProfile(formData);
     if (update) {
@@ -70,7 +67,6 @@ const EditProfileModal = ({
 
     if (response.fileUrls && response.fileUrls.length > 0) {
       const imageUrl = response.fileUrls[0].fileUrl;
-      console.log("URL de la imagen subida:", imageUrl);
 
       setFormData((prevData) => ({
         ...prevData,

@@ -36,7 +36,7 @@ class PostRepository {
     }
 
     const savedPost = await this.repository.save(post);
-    console.log(postData);
+
     const images = await Promise.all(
       imglist.map((imageUrl) => {
         if (!imageUrl) {

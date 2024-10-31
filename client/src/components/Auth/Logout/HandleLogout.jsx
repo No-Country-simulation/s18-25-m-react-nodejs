@@ -9,6 +9,7 @@ import { logOut } from '../../../services/Auth/checkAuth';
 
 const handleLogout = async () => {
   localStorage.clear();
+  await logOut();
   const webAuth = new auth0.WebAuth({
     domain: DOMAIN,
     clientID: CLIENT_ID,
@@ -18,7 +19,7 @@ const handleLogout = async () => {
     returnTo: CLIENT_DOMAIN,
     clientID: CLIENT_ID,
   });
-  await logOut();
+
 };
 
 export default handleLogout;

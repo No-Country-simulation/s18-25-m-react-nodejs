@@ -39,7 +39,6 @@ const TagsInput = ({ roles, onChange }) => {
 
     if (isValidTag) {
       setTags([...tags, tag]);
-      console.log(tags);
 
       onChange(tags.map((rol) => rol.text));
     } else {

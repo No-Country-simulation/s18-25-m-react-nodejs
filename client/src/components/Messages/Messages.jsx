@@ -20,7 +20,6 @@ export function Messages() {
   }, []);
 
   const handleSelectUser = (userId) => {
-    console.log(followed.list);
 
     const user = followed.list.find((user) => user.authId === userId);
 

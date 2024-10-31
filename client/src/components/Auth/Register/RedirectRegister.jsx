@@ -16,10 +16,8 @@ const RedirectRegister = () => {
 
     useEffect(() => {
         const getUser = async () => {
-            console.log('Authorization code');
             if (challengesData === 'none' && code) {
                 try {
-                    console.log(code);
                     const response = await fetch(`${APIDOMAIN}${APIDOMAIN_VERSION}/auth/register?code=${code}`, {
                         method: 'POST',
                         headers: {
@@ -33,8 +31,6 @@ const RedirectRegister = () => {
                     if (data.user.email) await setChallengesData(JSON.stringify(data.user.email));
                     else return setChallengesData('error');
                     localStorage.setItem("userdata", JSON.stringify(data.user));
-                    console.log(JSON.stringify(data));
-                    await fetchUserDetail();
 
                 } catch (error) {
                     console.error(
@@ -54,6 +50,7 @@ const RedirectRegister = () => {
 
     const handleLoginRedirect = () => {
         navigate('/');
+        window.location.reload();
     };
 
     return (

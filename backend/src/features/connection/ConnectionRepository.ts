@@ -21,8 +21,6 @@ class ConnectionRepository {
 
       const connExist = await this.isFollower(followedUser.id, followerUser.id);
 
-      console.log(connExist);
-
       if (connExist) return Error('La coneccion ya existe');
 
       const conn = new Connection();
@@ -84,8 +82,6 @@ class ConnectionRepository {
       },
     });
 
-    console.log({ count });
-
     return count;
   }
 
@@ -113,7 +109,6 @@ class ConnectionRepository {
         },
       },
     });
-    console.log(result);
 
     if (!result) {
       throw new NotFoundError('Connection not found');

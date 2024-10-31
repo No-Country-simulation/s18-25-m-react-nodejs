@@ -43,7 +43,6 @@ class UserRopository {
   }
 
   public async getAllUsers({ limit, search, skip }: PaginatedConfig & UserFilters) {
-    console.log('HOLA');
 
     const users = await this.repository.find({
       relations: ['social_networks', 'roles'],
@@ -89,8 +88,7 @@ class UserRopository {
   }
 
   public async getUserByAuthId(authId: User['authId']): Promise<User> {
-    console.log(authId);
-
+    
     const user = await this.repository.findOne({
       where: { authId },
       relations: ['social_networks', 'roles'],

@@ -8,9 +8,8 @@ export const uploadImage = async (imageFile) => {
             body: imageFile
         })
 
-        const data = await response.json(); // Asegúrate de convertir la respuesta a JSON
+        const data = await response.json();
 
-        console.log(data); // URLs de los archivos subidos
         return data;
         
     } catch (error) {

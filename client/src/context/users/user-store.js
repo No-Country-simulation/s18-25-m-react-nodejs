@@ -16,9 +16,6 @@ const userProfileStore = create((set) => ({
         const data = await getProfileService.getUserProfile() || "";
         if (data) {
             set((state) => {
-                console.log("Previous user instance:", state.userInstance); // Log del estado anterior
-                console.log("New user data:", data);
-                console.log("DATA DEL ZUSTAND", data);
 
                 return {
                     userInstance: {

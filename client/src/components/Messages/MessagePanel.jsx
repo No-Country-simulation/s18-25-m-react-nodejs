@@ -20,7 +20,6 @@ export const MessagePanel = ({ currentUser }) => {
 
     if (receiver && currentUser.authId) {
       socket.emit("registerUser", receiver);
-      console.log("Usuario registrado con authId:", currentUser.authId);
 
       socket.on("initialMessages", (initialMessages) => {
         setMessages(initialMessages);
@@ -40,12 +39,9 @@ export const MessagePanel = ({ currentUser }) => {
 
   useEffect(() => {
 
-    console.log(currentUser);
-
     if (currentUser && currentUser.authId) {
       setReceiver(currentUser.authId);
       fetchUserDetail();
-      console.log('Receptor:', currentUser, userInstance);
 
     }
   }, [currentUser, receiver]);

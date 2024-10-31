@@ -17,10 +17,8 @@ const RedirectLogin = () => {
 
     useEffect(() => {
         const getUser = async () => {
-            console.log('Authorization code');
             if (challengesData === 'none' && code) {
                 try {
-                    console.log(code);
                     const response = await fetch(`${APIDOMAIN}${APIDOMAIN_VERSION}/auth/login?code=${code}`, {
                         method: 'GET',
                         headers: {
@@ -31,8 +29,6 @@ const RedirectLogin = () => {
                     });
 
                     const data = await response.json();
-                    console.log(JSON.stringify(data));
-                    //Metodo para chequear el login
                     await checkAuth();
 
                     await fetchUserDetail();

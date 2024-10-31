@@ -11,7 +11,6 @@ const tokenCookieName = 'token';
 
 const CheckToken = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    console.log(req.cookies);
 
     let token: string | undefined = req.cookies[tokenCookieName] || res.locals.token;
 
@@ -40,9 +39,7 @@ const CheckToken = async (req: Request, res: Response, next: NextFunction) => {
       };
 
       res.locals.userData = userData;
-      console.log(res.locals['userData'] as UserDataToken);
 
-      console.log('Token Validado y Datos de Usuario Agregados al Contexto');
     }
     next();
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

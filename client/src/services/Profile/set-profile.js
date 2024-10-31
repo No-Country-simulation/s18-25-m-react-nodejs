@@ -11,7 +11,6 @@ const updateProfile = async (updatedUserData) => {
             job
         } = updatedUserData;
 
-        console.log(updatedUserData);
 
         const response = await fetch(`${APIDOMAIN}${APIDOMAIN_VERSION}/user`, {
             method: 'PUT',

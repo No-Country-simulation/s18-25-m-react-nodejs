@@ -18,10 +18,9 @@ export const initializeMSocketIO = (server: any) => {
 
   io.on('connection', (socket: Socket) => {
     socket.on('registerUser', async (receiverId) => {
-      console.log('Un cliente se ha conectado:', socket.id);
 
       const cookies = cookieParser.parse(socket.handshake.headers.cookie || '');
-      console.log('Cookies:', cookies);
+
       const token = cookies.token ? cookies.token.replace('Bearer ', '').trim() : null;
 
       if (!token) {
@@ -32,9 +31,6 @@ export const initializeMSocketIO = (server: any) => {
 
       const { authId } = await validateSocketToken(token);
       const messages: Message[] = await MessageService.getMessagesBetweenUsers(authId, receiverId);
-      console.log('MENSAJES ANTERIORES ', messages);
-
-      console.log('authId del usuario registrado : ', authId);
 
       userSockets[authId] = socket.id;
       io.emit('userList', Object.keys(userSockets));
@@ -53,10 +49,8 @@ export const initializeMSocketIO = (server: any) => {
     });
 
     socket.on('chatMessage', async (message: MessageSocket) => {
-      console.log('Un cliente se ha conectado:', socket.id);
 
       const cookies = cookieParser.parse(socket.handshake.headers.cookie || '');
-      console.log('Cookies:', cookies);
       const token = cookies.token.replace('Bearer ', '').trim();
       const { authId } = await validateSocketToken(token);
 
@@ -71,18 +65,14 @@ export const initializeMSocketIO = (server: any) => {
 
       // Si el receptor no está registrado, añadirlo
       if (!receiverSocketId) {
-        console.log(`El receptor con ID ${message.receiverId} no está registrado. Registrándolo...`);
-
         // Aquí puedes registrar el socket directamente
         userSockets[message.receiverId] = null;
         receiverSocketId = null;
       }
 
       console.log(userSockets[authId], userSockets[message.receiverId]);
-      console.log('Estado de userSockets después de registro:', userSockets);
 
       if (receiverSocketId) {
-        console.log('mandando mensaje al receptor', message);
         await MessageService.createMessage(authId, message.receiverId, message.content);
         io.to(receiverSocketId).emit('chatMessage', message);
       } else {
@@ -94,7 +84,6 @@ export const initializeMSocketIO = (server: any) => {
     });
 
     socket.on('disconnect', () => {
-      console.log('Un cliente se ha desconectado:', socket.id);
       for (const [user, id] of Object.entries(userSockets)) {
         if (id === socket.id) {
           delete userSockets[user];

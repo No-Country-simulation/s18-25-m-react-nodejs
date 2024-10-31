@@ -13,8 +13,6 @@ export const MessageSidebar = ({
   handleUser
 }) => {
 
-  console.log(userList);
-
   return (
     <div className="w-1/4 rounded-l-lg
     border-solid border-r-[1px] border-gray-700

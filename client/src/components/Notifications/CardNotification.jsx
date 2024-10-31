@@ -23,7 +23,6 @@ const CardNotification = ({
       return `${year}-${month}-${day}`;
     }
   };
-  //console.log(username);
   const [isNewNotify, setIsNewNotify] = useState(true);
 
   return (

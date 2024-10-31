@@ -18,10 +18,7 @@ const HomePage = () => {
 
   const [loading, setLoading] = useState(true);
   const [isOpenModal, setIsOpenModal] = useState(false);
-  
 
-  //const { user } = isDataUser;
-  //console.log(isDataUser);
   useEffect(() => {
     setLoading(isLoading);
   }, [isLoading]);

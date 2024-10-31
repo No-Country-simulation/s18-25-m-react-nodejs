@@ -46,9 +46,7 @@ export const PostsGrid = ({
     fetchPosts(page);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  console.log(posts)
-
+  
   return (
     <div
       className="w-full"

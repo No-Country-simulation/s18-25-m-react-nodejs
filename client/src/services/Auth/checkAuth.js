@@ -6,7 +6,6 @@ export const checkAuth = async () => {
   const SECONDS = 5000;
 
   if (lastCheck && now - parseInt(lastCheck) < SECONDS) {
-      console.log('La verificación de autenticación fue realizada recientemente.');
       return JSON.parse(localStorage.getItem("userdata") || "false");
   }
 
@@ -22,7 +21,6 @@ export const checkAuth = async () => {
   
       if (response.ok) {
           const userData = await response.json();
-          console.log('Usuario autenticado:', userData);
   
           // Guarda los datos en el localStorage y la marca de tiempo actual
           localStorage.setItem("userdata", JSON.stringify(userData));
@@ -30,7 +28,6 @@ export const checkAuth = async () => {
 
           return true;
       } else {
-          console.log('No autenticado');
           localStorage.removeItem("userdata");
           localStorage.removeItem("lastAuthCheck");
           return false;

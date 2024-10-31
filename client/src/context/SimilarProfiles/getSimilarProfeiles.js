@@ -8,7 +8,6 @@ export const useSimilarProfile = create((set) => ({
   getSimilarProfile: async () => {
     const data = await import("../../data/similarProfile/similarProfile.json");
     const response = data.response;
-    console.log(response);
     set((state) => {
       return {
         profiles: response,
