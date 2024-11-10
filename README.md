@@ -7,7 +7,7 @@
 **Full-Stack Developer** en la creación y desarrollo de las siguientes funcionalidades:
 
 ### Front-End
-- **Desarrollo de interfaces de usuario** en React, incluyendo un diseño intuitivo para los perfiles de usuario y una vista de chat en tiempo real.
+- **Desarrollo de interfaces de usuario** en React, incluyendo un diseño intuitivo para los perfiles de usuario,notificaciones,home menu y una vista de chat en tiempo real.
 - **Gestión de estados globales** con Zustand para un manejo eficiente y centralizado de los estados de la aplicación.
 
 ### Back-End
@@ -16,7 +16,7 @@
 - **Sistema de mensajería en tiempo real** implementado con Socket.IO para comunicación instantánea entre usuarios.
 
 ### Persistencia de Datos
-- **Diseño y administración** de entidades para usuarios y mensajes en una base de datos MySQL, asegurando la integridad y disponibilidad de la información de usuario y mensajes.
+- **Diseño y administración** de entidades para usuarios, posteos, notificaciones, mensajes en una base de datos MySQL, asegurando la integridad y disponibilidad de la información de usuario y mensajes.
 
 ## Funcionalidades Principales
 - Creación de perfiles de usuario personalizados
